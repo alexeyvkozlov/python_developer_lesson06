@@ -2,8 +2,8 @@
 # cd c:\python_developer
 # cd d:\python_developer
 # .\pydev\Scripts\activate
-# cd c:\python_developer\lesson_05
-# cd d:\python_developer\lesson_05
+# cd c:\python_developer\python_developer_lesson06
+# cd d:\python_developer\python_developer_lesson06
 #~~~~~~~~~~~~~~~~~~~~~~~~
 # python console_file_manager.py
 #~~~~~~~~~~~~~~~~~~~~~~~~
@@ -36,9 +36,9 @@ history = []
 # 01 
 # - создать папку
 # после выбора пользователь вводит название папки, создаем её в рабочей директории;
-def create_folder_01() -> bool:
+def create_folder_01(folder_name: str) -> bool:
   retVal = False
-  folder_name = input("Введите название папки для создания: ")
+  # folder_name = input("Введите название папки для создания: ")
   try:
     os.mkdir(folder_name)
     print(f"Папка создана: `{folder_name}`")
@@ -51,9 +51,9 @@ def create_folder_01() -> bool:
 #~ 02
 # - удалить (файл/папку)
 # после выбора пользователь вводит название папки или файла, удаляем из рабочей директории если такой есть;
-def delete_file_or_folder_02() -> bool:
+def delete_file_or_folder_02(item_name: str) -> bool:
   retVal = False
-  item_name = input("Введите название файла или папки для удаления: ")
+  # item_name = input("Введите название файла или папки для удаления: ")
   try:
     os.remove(item_name) if os.path.isfile(item_name) else os.rmdir(item_name)
     print(f"Удален(а): `{item_name}`")
@@ -176,9 +176,11 @@ if __name__ == '__main__':
     #~~~~~~~~~~~~~~~~~~~~~~~~
     choice = input("Выберите пункт меню: ")
     if choice == '1':
+      folder_name = input("Введите название папки для создания: ")
       create_folder_01()
     elif choice == '2':
-      delete_file_or_folder_02()
+      item_name = input("Введите название файла или папки для удаления: ")
+      delete_file_or_folder_02(item_name)
     elif choice == '3':
       src1 = input("Введите название файла или папки для копирования: ")
       dst2 = input("Введите название нового/ой файла или папки для копирования: ")
